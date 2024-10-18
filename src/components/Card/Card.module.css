@@ -1,0 +1,39 @@
+.card {
+  width: 300px;
+  height: 180px;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #333;
+}
+
+.cardIssuer {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.cardNumber {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.cardHolder,
+.expirationDate {
+  font-size: 14px;
+}
+
+/* Styling för olika kortutgivare */
+.visa {
+  background-color: #1a1f71; /* Blått tema för Visa */
+}
+
+.mastercard {
+  background-color: #ff5f00; /* Orange tema för Mastercard */
+}
+
+.americanexpress {
+  background-color: #4cc1a1; /* Grönt tema för American Express */
+}
