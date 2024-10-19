@@ -12,7 +12,7 @@ const AddCardPage = () => {
   const [cardIssuer, setCardIssuer] = useState("");
   const [cardNumber, setcardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
-  const [exprieMonth, setExpireMonth] = useState("");
+  const [expireMonth, setExpireMonth] = useState("");
   const [expireYear, setExpireYear] = useState("");
   const [ccv, setCCV] = useState("");
 
@@ -24,7 +24,7 @@ const AddCardPage = () => {
         cardIssuer,
         cardNumber,
         cardHolder,
-        exprieMonth,
+        expireMonth,
         expireYear,
         ccv,
       })
@@ -44,6 +44,7 @@ const AddCardPage = () => {
           <select
             value={cardIssuer}
             onChange={(e) => setCardIssuer(e.target.value)}
+            required
           >
             <option value="">Välj kortutgivare</option>
             <option value="Visa">Visa</option>
@@ -59,6 +60,8 @@ const AddCardPage = () => {
             value={cardNumber}
             onChange={(e) => setcardNumber(e.target.value)}
             maxLength="16"
+            minLength="16"
+            pattern="\d{16}"
             required
             placeholder="Kortnummer"
           />
@@ -71,6 +74,7 @@ const AddCardPage = () => {
             value={cardHolder}
             onChange={(e) => setCardHolder(e.target.value)}
             required
+            pattern="^[a-zA-Z\s]+$"
             placeholder="Namn på kortinnehavaren"
           />
         </div>
@@ -79,7 +83,7 @@ const AddCardPage = () => {
           <label>Utångsdatum</label>
           <input
             type="text"
-            value={exprieMonth}
+            value={expireMonth}
             onChange={(e) => setExpireMonth(e.target.value)}
             required
             maxLength="2"

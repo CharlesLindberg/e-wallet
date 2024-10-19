@@ -31,7 +31,7 @@ const HomePage = () => {
       {activeCard && (
         <div>
           <h2>Aktivt kort</h2>
-          <Link to={`/card/${activateCard.id}`}>
+          <Link to={`/card/${activeCard.id}`}>
             <Card
               cardIssuer={activeCard.cardIssuer}
               cardNumber={activeCard.cardNumber}

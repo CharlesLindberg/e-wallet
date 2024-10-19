@@ -37,3 +37,31 @@
 .americanexpress {
   background-color: #4cc1a1; /* Grönt tema för American Express */
 }
+
+.cardIssuer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.cardIssuer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bankLogo {
+  width: 50px; /* Justera storleken efter behov */
+  height: auto;
+}
+
+.logo {
+  width: 50px; /* Justera storleken efter behov */
+  height: auto;
+}

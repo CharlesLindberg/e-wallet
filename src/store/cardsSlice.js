@@ -20,6 +20,7 @@ const cardsSlice = createSlice({
   initialState,
   reducers: {
     addCard: (state, action) => {
+      console.log("Payload vid addCard: ", action.payload);
       const newCard = {
         ...action.payload,
         id: Date.now(),
@@ -27,12 +28,6 @@ const cardsSlice = createSlice({
       };
       state.cards.push(newCard);
       saveToLocalStorage(state.cards);
-
-      //   state.cards.push({
-      //     ...action.payload,
-      //     id: Date.now(), // Generera unikt id for kortet
-      //     isActive: false,
-      //   });
     },
     activateCard: (state, action) => {
       // Sätt alla kort till inaktiv
