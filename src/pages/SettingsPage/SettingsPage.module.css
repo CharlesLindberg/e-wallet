@@ -1,21 +1,30 @@
+/* src/pages/SettingsPage/SettingsPage.module.css */
 .settingsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 20px;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .section {
   margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
 }
 
 .button {
-  margin-right: 10px;
-}
-
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.subtitle {
-  font-size: 18px;
-  margin-bottom: 10px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
 }

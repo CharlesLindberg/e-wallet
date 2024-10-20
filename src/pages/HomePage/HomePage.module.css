@@ -1,32 +1,20 @@
-.homePage {
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  width: 100%; /* Täcker hela bredden */
 }
 
-.addCardButton {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.addCardButton:hover {
-  background-color: #45a049;
-}
-/* Styling för raderingsknappen */
-.removeButton {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.removeButton:hover {
-  background-color: #ff1a1a;
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap; /* Gör att korten kan radbrytas om de är för breda */
+  gap: 15px;
+  justify-content: center; /* Centrerar korten inom containern */
+  width: 100%;
+  max-width: 1200px; /* Gör containern bredare */
 }

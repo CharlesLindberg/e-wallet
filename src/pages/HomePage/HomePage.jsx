@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { activateCard, removeCard } from "../../store/cardsSlice";
 import styles from "./HomePage.module.css";
-import Card from "../../components/Card/card";
+import Card from "../../components/Card/Card";
 
 const HomePage = () => {
   const cards = useSelector((state) => state.cards.cards);
@@ -18,7 +17,6 @@ const HomePage = () => {
     dispatch(removeCard(id));
   };
 
-  // Filtrera ut det aktiva kortet och de inaktiva
   const activeCard = cards.find((card) => card.isActive);
   const inactiveCards = cards.filter((card) => !card.isActive);
 
@@ -26,80 +24,55 @@ const HomePage = () => {
     <div className={styles.HomePage}>
       <h1>Välkommen till E-wallet</h1>
 
-      {/* Visa det aktiva kortet  */}
-
       {activeCard && (
         <div>
           <h2>Aktivt kort</h2>
-          <Link to={`/card/${activeCard.id}`}>
-            <Card
-              cardIssuer={activeCard.cardIssuer}
-              cardNumber={activeCard.cardNumber}
-              cardHolder={activeCard.cardHolder}
-              expireMonth={activeCard.expireMonth}
-              expireYear={activeCard.expireYear}
-            />
-          </Link>
+          <div className={styles.cardsContainer}>
+            <Link to={`/card/${activeCard.id}`}>
+              <Card
+                cardIssuer={activeCard.cardIssuer}
+                cardNumber={activeCard.cardNumber}
+                cardHolder={activeCard.cardHolder}
+                expireMonth={activeCard.expireMonth}
+                expireYear={activeCard.expireYear}
+              />
+            </Link>
+          </div>
         </div>
       )}
 
-      {/* Visa de inaktiva korten  */}
-
-      <div>
-        <h2>Inaktiva kort</h2>
+      <h2>Inaktiva kort</h2>
+      <div className={styles.cardsContainer}>
         {inactiveCards.length === 0 ? (
           <p>Du har inga inaktiva kort</p>
         ) : (
-          <div>
-            {inactiveCards.map((card) => (
-              <div key={card.id} className={styles.card}>
-                <Link to={`/card/${card.id}`}>
-                  <Card
-                    cardIssuer={card.cardIssuer}
-                    cardNumber={card.cardNumber}
-                    cardHolder={card.cardHolder}
-                    expireMonth={card.expireMonth}
-                    expireYear={card.expireYear}
-                  />
-                </Link>
-                <button onClick={() => handleActivate(card.id)}>
-                  Aktivera kort
-                </button>
-                <button
-                  onClick={() => handleRemove(card.id)}
-                  className={styles.removeButton}
-                >
-                  Radera kort
-                </button>
-              </div>
-            ))}
-          </div>
+          inactiveCards.map((card) => (
+            <div key={card.id} className={styles.card}>
+              <Link to={`/card/${card.id}`}>
+                <Card
+                  cardIssuer={card.cardIssuer}
+                  cardNumber={card.cardNumber}
+                  cardHolder={card.cardHolder}
+                  expireMonth={card.expireMonth}
+                  expireYear={card.expireYear}
+                />
+              </Link>
+              <button
+                onClick={() => handleActivate(card.id)}
+                className={styles.button}
+              >
+                Aktivera kort
+              </button>
+              <button
+                onClick={() => handleRemove(card.id)}
+                className={styles.button}
+              >
+                Radera kort
+              </button>
+            </div>
+          ))
         )}
       </div>
-
-      {/* 
-      {cards.length === 0 ? (
-        <p>Du har inga kort ännu. Klicka på knappen för att lägga till kort.</p>
-      ) : (
-        <div>
-          {cards.map((card) => (
-            <div key={card.id} className={styles.card}>
-              <Card
-                cardIssuer={card.cardIssuer}
-                cardNumber={card.cardNumber}
-                cardHolder={card.cardHolder}
-                expireMonth={card.expireMonth}
-                expireYear={card.expireYear}
-              />
-              {!card.isActive && (
-                <button onClick={() => handleActivate(card.id)}>
-                  Aktivera kort
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-      )} */}
 
       <Link to="/addcard">
         <button className={styles.addCardButton}>

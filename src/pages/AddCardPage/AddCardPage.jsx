@@ -4,6 +4,7 @@ import { useState } from "react";
 import { addCard } from "../../store/cardsSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Card from "../../components/Card/Card";
 
 const AddCardPage = () => {
   // state för att hålla koll på fältens värden
@@ -36,6 +37,17 @@ const AddCardPage = () => {
   return (
     <div className={styles.AddCardPage}>
       <h1>Lägg till nytt kort</h1>
+
+      <div className={styles.previewContainer}>
+        <h2>Förhandsvisning</h2>
+        <Card
+          cardIssuer={cardIssuer || "Visa"}
+          cardNumber={cardNumber || "**** **** **** ****"}
+          cardHolder={cardHolder || "CARDHOLDER NAME"}
+          expireMonth={expireMonth || "MM"}
+          expireYear={expireYear || "YYYY"}
+        />
+      </div>
 
       {/* Förmulär för att lägga till kort  */}
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -81,33 +93,38 @@ const AddCardPage = () => {
 
         <div className={styles.formGroup}>
           <label>Utångsdatum</label>
-          <input
-            type="text"
-            value={expireMonth}
-            onChange={(e) => setExpireMonth(e.target.value)}
-            required
-            maxLength="2"
-            placeholder="MM"
-          />
-          <input
-            type="text"
-            value={expireYear}
-            onChange={(e) => setExpireYear(e.target.value)}
-            required
-            maxLength="4"
-            placeholder="YYYY"
-          />
-
-          <div className={styles.formGroup}>
-            <label>CCV</label>
+          <div className={styles.expiryContainer}>
             <input
               type="text"
-              value={ccv}
-              onChange={(e) => setCCV(e.target.value)}
-              maxLength="3"
+              value={expireMonth}
+              onChange={(e) => setExpireMonth(e.target.value)}
               required
-              placeholder="xxx"
+              maxLength="2"
+              placeholder="MM"
+              className={styles.smallInput}
             />
+            <span className={styles.separator}>/</span>
+            <input
+              type="text"
+              value={expireYear}
+              onChange={(e) => setExpireYear(e.target.value)}
+              required
+              maxLength="4"
+              placeholder="YYYY"
+              className={styles.smallInput}
+            />{" "}
+            <div className={styles.formGroup}>
+              <label>CCV</label>
+              <input
+                type="text"
+                value={ccv}
+                onChange={(e) => setCCV(e.target.value)}
+                maxLength="3"
+                required
+                placeholder="xxx"
+                className={styles.smallInput}
+              />
+            </div>
           </div>
 
           <button type="submit" className={styles.submitButton}>

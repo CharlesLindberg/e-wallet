@@ -68,7 +68,9 @@ const CardDetailPage = () => {
               maxLength="4"
               placeholder="ÅÅÅÅ"
             />
-            <button onClick={handleSave}>Spara ändringar</button>
+            <button onClick={handleSave} className={styles.button}>
+              Spara ändringar
+            </button>
           </div>
         ) : (
           <div>
@@ -84,13 +86,18 @@ const CardDetailPage = () => {
 
         {!card.isActive && (
           <div>
-            <button onClick={() => setIsEditing(!isEditing)}>
+            <button
+              className={styles.button}
+              onClick={() => setIsEditing(!isEditing)}
+            >
               {isEditing ? "Avbryt" : "Redigera kort"}
             </button>
-            <button onClick={handleActivate}>Aktivera kort</button>
+            <button className={styles.button} onClick={handleActivate}>
+              Aktivera kort
+            </button>
             <button
               onClick={() => dispatch(removeCard(card.id))}
-              className={styles.removeButton}
+              className={styles.button}
             >
               Radera kort
             </button>

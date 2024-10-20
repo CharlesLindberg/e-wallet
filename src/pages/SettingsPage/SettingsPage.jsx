@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "./SettingsPage.module.css";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SettingsPage = ({ currentTheme, onThemeChange }) => {
   const navigate = useNavigate();
+
   const deleteInactiveCards = () => {
-    // Fixar logik sen
     console.log("Radera inaktiva kort");
   };
 
@@ -17,13 +16,25 @@ const SettingsPage = ({ currentTheme, onThemeChange }) => {
   return (
     <div className={styles.settingsPage}>
       <h1 className={styles.title}>Inställningar</h1>
-      <p>Nuvarande tema {currentTheme}</p>
+      <p>Nuvarande tema: {currentTheme}</p>
 
       <section className={styles.section}>
         <h2 className={styles.subtitle}>Välj tema</h2>
-        <button onClick={() => onThemeChange("light")}>Ljust tema</button>
-        <button onClick={() => onThemeChange("dark")}>Darkmode</button>
-        <button onClick={() => onThemeChange("green")}>Alternative</button>
+        <button
+          className={styles.button}
+          onClick={() => onThemeChange("light")}
+        >
+          Ljust tema
+        </button>
+        <button className={styles.button} onClick={() => onThemeChange("dark")}>
+          Darkmode
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => onThemeChange("green")}
+        >
+          Grönt tema
+        </button>
       </section>
 
       <section className={styles.section}>
@@ -33,7 +44,9 @@ const SettingsPage = ({ currentTheme, onThemeChange }) => {
         </button>
       </section>
 
-      <button onClick={handleBackToHome}>Till startsidan</button>
+      <button onClick={handleBackToHome} className={styles.button}>
+        Till startsidan
+      </button>
     </div>
   );
 };
