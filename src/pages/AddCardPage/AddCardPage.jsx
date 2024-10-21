@@ -17,8 +17,18 @@ const AddCardPage = () => {
   const [expireYear, setExpireYear] = useState("");
   const [ccv, setCCV] = useState("");
 
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const month = parseInt(expireMonth, 10);
+    const year = parseInt(expireYear, 10);
+    if (year < currentYear || (year === currentYear && month < currentMonth)) {
+      alert("Utgångsdatumet får inte vara ett datum som redan passerat.");
+      return;
+    }
 
     dispatch(
       addCard({

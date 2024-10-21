@@ -27,15 +27,15 @@
 
 /* Styling för olika kortutgivare */
 .visa {
-  background-color: #1a1f71; /* Blått tema för Visa */
+  background-color: #1a1f71;
 }
 
 .mastercard {
-  background-color: #ff5f00; /* Orange tema för Mastercard */
+  background-color: #ff5f00;
 }
 
 .americanexpress {
-  background-color: #4cc1a1; /* Grönt tema för American Express */
+  background-color: #4cc1a1;
 }
 
 .cardIssuer {
@@ -57,11 +57,11 @@
 }
 
 .bankLogo {
-  width: 50px; /* Justera storleken efter behov */
+  width: 50px;
   height: auto;
 }
 
 .logo {
-  width: 50px; /* Justera storleken efter behov */
+  width: 50px;
   height: auto;
 }

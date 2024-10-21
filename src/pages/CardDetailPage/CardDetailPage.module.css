@@ -1,4 +1,4 @@
-/* src/pages/CardDetailPage/CardDetailPage.module.css */
+
 .cardDetailsPage {
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   margin-bottom: 15px;
   width: 100%;
   max-width: 500px;
-  margin: 0 auto; /* Centrerar kortinformationen */
+  margin: 0 auto; 
 }
 
 .button {
