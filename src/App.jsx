@@ -8,7 +8,7 @@ import Header from "./components/Header/Header";
 import "./App.css";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
