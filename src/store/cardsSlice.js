@@ -47,8 +47,21 @@ const cardsSlice = createSlice({
       state.cards = state.cards.filter((card) => card.id !== action.payload);
       saveToLocalStorage(state.cards);
     },
+    updateCard: (state, action) => {
+      const { id, updatedCard } = action.payload;
+      const cardIndex = state.cards.findIndex((card) => card.id === id);
+
+      if (cardIndex !== -1) {
+        state.cards[cardIndex] = {
+          ...state.cards[cardIndex],
+          ...updatedCard,
+        };
+        saveToLocalStorage(state.cards);
+      }
+    },
   },
 });
 
-export const { addCard, activateCard, removeCard } = cardsSlice.actions;
+export const { addCard, activateCard, removeCard, updateCard } =
+  cardsSlice.actions;
 export default cardsSlice.reducer;

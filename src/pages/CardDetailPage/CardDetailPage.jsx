@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { activateCard, removeCard } from "../../store/cardsSlice";
+import { activateCard, removeCard, updateCard } from "../../store/cardsSlice";
 import styles from "./CardDetailPage.module.css";
 
 const CardDetailPage = () => {
@@ -19,8 +19,19 @@ const CardDetailPage = () => {
   const [expireYear, setExpireYear] = useState(card.expireYear);
 
   const handleSave = () => {
-    // Spara ändringarna i kortinformationen (implementera senare)
+    // Spara ändringarna i kortinformationen
+
+    const updatedCard = {
+      cardHolder,
+      expireMonth,
+      expireYear,
+    };
+
+    // Dispatcha/skicka uppdateringen till redux
+    dispatch(updateCard({ id: card.id, updatedCard }));
+
     setIsEditing(false);
+    navigate("/");
   };
 
   const handleActivate = () => {
